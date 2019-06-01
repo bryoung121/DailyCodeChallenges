@@ -1,0 +1,141 @@
+<html>
+<head>
+<script>
+
+//using a javascript object to hold the information
+function frequencyOfCharactersInString(str)
+{
+	str = str.toLowerCase();
+	var cntobj = {};
+	
+	for( var i=0; i < str.length; i++)
+	{
+		if (cntobj[str[i]])
+		{
+			cntobj[str[i]] = cntobj[str[i]] + 1;
+		} else
+		{
+			cntobj[str[i]] = 1;
+		}
+	}
+	
+	for (var key in cntobj) {
+    if (cntobj.hasOwnProperty(key)) {
+        document.write(key + " -> " + cntobj[key] + "<br>");
+    }
+	}
+}
+
+//recurrsion is the key here
+function fibonnaci(pos)
+{
+	arr=[];
+	pos = pos -1; //fibonnaci starts at 0 so we want to subtract 1 from position to make sure we return the correct location
+		function f(pos){
+			if(arr[pos])
+			{ 
+				return arr[pos];
+			}
+			if (pos < 2)
+			{ 
+				arr[pos] = pos;
+			} else { 
+				arr[pos] = f(pos -1) + f(pos -2);
+			}
+			return arr[pos];
+		}
+		return f(pos)
+}
+
+//loop through all records to get to end pointer
+//calculate the
+function fizzbuzz(num1, num2)
+{
+	for (var i=0; i<=100; i++)
+	{
+		var output = '';
+		if (i % num1 == 0){ output += 'fizz'};
+		if (i % num2 == 0) { output += 'buzz'};
+		
+		if (output == ''){ output = i};
+		document.write (output + "<BR>");
+	}
+
+}
+
+function isPalindrome(str)
+{
+	var str2 = str.split('').reverse().join('');
+	return str === str2;
+}
+
+function doesitadd(intstr, num)
+{
+	intstr = intstr.split(",");
+	
+	for (var j=0; j < intstr.length; j++)
+	{
+		for (var i=0; i < intstr.length; i++)
+		{
+			num1 = parseInt(intstr[j]) + parseInt(intstr[i]);
+			document.write ("<BR>" + num1);
+		
+			if(num1 === parseInt(num))
+			{ return true;}
+			
+		}
+	}
+	return false;
+}
+
+
+function daily2(instr)
+{
+	instr = instr.split(",");
+	var outarr = [];
+	var num1 = 1;
+	var num2 = 1;
+
+	for (var j= 0; j < instr.length; j++)
+	{
+		for (var i=0; i < instr.length; i++)
+		{
+			if (j != i)
+			{
+				num1 = num1 * parseInt(instr[i]);
+				//num2 = num1 + num2;
+			}			
+		}
+		outarr[j] = num1;
+		num1 = 1;
+	}
+	for (var key in outarr) {
+		if (outarr.hasOwnProperty(key)) {
+			document.write(key + " -> " + outarr[key] + "<br>");
+			}
+		}
+}
+
+
+
+
+
+
+document.write(" Frequency of letters in string of text.")
+frequencyOfCharactersInString("my tests of CODE");
+
+document.write("</br>Fibonnaci Result in postion 6: " + fibonnaci(6) + "</br></br>");
+
+fizzbuzz(3, 5);
+
+document.write("<BR><BR>Is Radar a Palindrome: " + isPalindrome("radar"));
+
+document.write ( "<BR><BR> Is the last number found by adding any 2 numbers from the list of numbers? Does it add up (1,2,3,4,5,   9)? " + doesitadd("1,2,3,4,5", "9"));
+document.write("<br><br>Daily Coding Problem #2: <br>");
+daily2("3,2,1");
+</script>
+</head>
+<body>
+<p>file:///C:/tests/test.html</p>
+</body>
+</html>
